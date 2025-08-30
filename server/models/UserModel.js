@@ -1,0 +1,56 @@
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema(
+    {
+        firstName: {
+            type: String,
+            required: [true, "First Name is required"],
+            trim: true
+        },
+        lastName: {
+            type: String,
+            required: [true, "First Name is required"],
+            trim: true
+        },
+        email: {
+            type: String,
+            required: [true, "First Name is required"],
+            trim: true
+        },
+        password: {
+            type: String,
+            required: [true, "First Name is required"],
+        },
+        accountType: {
+            type: String,
+            enum: ["Admin", "Student", "Instructor"],
+            required: [true, "Account type is required"]
+        },
+        additionalDetails: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Profile",
+            required: true
+        },
+        courses: [
+            {
+                type: String,
+                ref: "Course"
+            }
+        ],
+        image: {
+            type: String,
+            required: [true, "Image is required"]
+        },
+        courseProgress: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "CourseProgress",
+            }
+        ]
+    },
+    {
+        timestamps: true
+    }
+);
+const User = mongoose.model("User", userSchema);
+export default User;
