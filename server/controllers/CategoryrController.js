@@ -1,7 +1,7 @@
-import Tag from "../models/TagsModel.js";
+import Category from "../models/CategoryModel.js";
 
 // create tag 
-export const createTag = async (req, res) => {
+export const createCategory = async (req, res) => {
     try {
 
         // 1 fetch data from req.body
@@ -16,7 +16,7 @@ export const createTag = async (req, res) => {
         }
 
         // 3 create tag
-        const tagDetails = await Tag.create({
+        const categoryDetails = await Category.create({
             name,
             description
         });
@@ -24,12 +24,12 @@ export const createTag = async (req, res) => {
         // 4 send response
         res.status(200).json({
             success: true,
-            message: "Tag created successfully",
-            tagDetails
+            message: "Category created successfully",
+            categoryDetails
         });
 
     } catch (error) {
-        console.log("Error in createTag function : ", error);
+        console.log("Error in create Category function : ", error);
         res.status(500).json({
             success: false,
             message: "Internal server error",
@@ -39,20 +39,20 @@ export const createTag = async (req, res) => {
 }
 
 // get all tags
-export const showAllTags = async (req, res) => {
+export const showAllCategory = async (req, res) => {
     try {
 
         // 1 fetch data from db
-        const allTags = await Tag.find({}, { name: 1, description: 1 });
+        const allCategory = await Category.find({}, { name: 1, description: 1 });
 
         // 2 send response
         res.status(200).json({
             success: true,
-            message: "All tags fetched successfully",
-            allTags
+            message: "All Category fetched successfully",
+            allCategory
         });
     } catch (error) {
-        console.log("Error in showAllTags function : ", error);
+        console.log("Error in showAllCategory function : ", error);
         res.status(500).json({
             success: false,
             message: "Internal server error",
