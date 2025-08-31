@@ -124,8 +124,6 @@ export const sendOTP = async (req, res) => {
         })
     }
 }
-
-
 // signup
 
 export const signup = async (req, res) => {
