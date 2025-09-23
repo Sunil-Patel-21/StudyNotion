@@ -7,7 +7,6 @@ export const updateProfile = async (req, res) => {
 
         // 1 get data
         const {
-
             dateOfBirth = "",
             about = "",
             contactNumber = "",
