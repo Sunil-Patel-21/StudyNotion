@@ -5,7 +5,6 @@ import { uploadImageToCloudinary } from "../utils/imageUploader.js";
 
 
 // create course
-
 export const createCourse = async (req, res) => {
     try {
 
@@ -118,4 +117,50 @@ export const getAllCourse = async (req, res) => {
     }
 }
 
+export const getCourseDetails = async (req, res) => {
+    try {
+
+        // 1 get course id which is sent by frontend in body
+        const { courseId } = req.body;
+
+        // 2 find course details
+        const courseDetails = await Course.findById(courseId)
+            .populate({
+                path:"instructor",
+                populate:{
+                    path:"additionalDetails",
+                }
+            })
+            .populate("tag")
+            .populate({
+                path:"courseContent",
+                populate:{
+                    path:"subSection",
+                }
+            })
+        
+        // 3 validation
+        if (!courseDetails) {
+            return res.status(400).json({
+                success: false,
+                message: "Course details not found."
+            })
+        }    
+
+        // 4 return response
+        return res.status(200).json({
+            success: true,
+            message: "Course details fetched successfully",
+            data: courseDetails
+        })
+
+    } catch (error) {
+        console.log("Error in get course details function : ", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error.",
+            error: error.message
+        })
+    }
+}
 
