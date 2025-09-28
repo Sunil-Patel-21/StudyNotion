@@ -1,5 +1,6 @@
-import RatingAndReview from "../models/RatingAndReviewModel";
+
 import Course from "../models/CourseModel.js";
+import RatingAndReview from "../models/RatingAndReviewModel.js";
 
 // createRatingAndReview 
 export const createRatingAndReview = async (req, res) => {

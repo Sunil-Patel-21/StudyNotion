@@ -1,13 +1,10 @@
 import jwt from "jsonwebtoken";
-import User from "../models/UserModel.js";
-
-
 // authentication 
 export const auth = async (req, res, next) => {
     try {
 
         // extract token
-        const token = req.header("Authorization").replace("Bearer ", "") || req.cookies.token;
+        const token = req.cookies.token|| req.header("Authorization").replace("Bearer ", "");
 
         // if token missing, then return  response
         if (!token) {

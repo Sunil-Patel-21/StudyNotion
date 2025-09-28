@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema(
         additionalDetails: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Profile",
-            required: true
         },
         courses: [
             {
@@ -39,7 +38,6 @@ const userSchema = new mongoose.Schema(
         ],
         image: {
             type: String,
-            required: [true, "Image is required"]
         },
         courseProgress: [
             {
