@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { FaArrowRight } from "react-icons/fa";
 import HighlightText from "../components/core/HomePage/HighlightText";
 import CTAButton from "../components/core/HomePage/CTAButton";
 import Banner from "../assets/Images/banner.mp4";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks";
+import TimeLineSection from "../components/core/HomePage/TimeLineSection";
+import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
+import InstructorSection from "../components/core/HomePage/InstructorSection";
+import Footer from "../components/common/Footer";
+import ExploreMore from "../components/core/HomePage/ExploreMore";
 function Home() {
   return (
     <div>
@@ -14,7 +19,7 @@ function Home() {
           <div className="group mt-16 p-1 mx-auto rounded-full bg-[#161D29] font-bold text-[#999DAA] transition-all duration-200 hover:scale-95 ">
             <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-[#000814]">
               <p>Become an Instructor</p>
-              <MdOutlineArrowRightAlt />
+              <FaArrowRight />
             </div>
           </div>
         </Link>
@@ -72,7 +77,9 @@ function Home() {
             }}
             codeblock={`<!DOCTYPE html>\n<html lang="en"><html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n <body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>\n</html>`}
             codeColor={"text-[#FFD700]"}
-            backgroundGradient={"inset-0 bg-[radial-gradient(ellipse,rgba(250,204,21,0.25),transparent_70%)]"}
+            backgroundGradient={
+              "inset-0 bg-[radial-gradient(ellipse,rgba(250,204,21,0.25),transparent_70%)]"
+            }
           />
         </div>
 
@@ -107,11 +114,70 @@ function Home() {
             }
           />
         </div>
+         <ExploreMore />
       </div>
 
       {/* section 2 */}
+
+      <div className="bg-[#F9F9F9] text-[#2C333F] mt-32 ">
+        {/* part 1  */}
+        <div className="homepage_bg h-[400px] ">
+          <div className="w-11/12 max-w-[1100px] flex flex-col items-center gap-5 mx-auto ">
+            <div className="h-[200px]"></div>
+            <div className="flex flex-row gap-7 text-white">
+              <CTAButton active={true} linkTo={"/signup"}>
+                <div className="flex items-center gap-3">
+                  Explore Full Catalog <FaArrowRight />
+                </div>
+              </CTAButton>
+              <CTAButton active={false} linkTo={"/signup"}>
+                <div>Learn More</div>
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+
+        {/* part 2  */}
+
+        <div className="w-11/12 max-w-[1100px] flex flex-col items-center justify-between mx-auto gap-7">
+          <div className="flex flex-row gap-5 mb-10 mt-[90px] ">
+            <div className="text-4xl font-semibold w-[45%]">
+              Get the skills you need for a
+              <HighlightText text={"job that is in demand."} />
+            </div>
+
+            <div className="flex flex-col gap-10 w-[40%] items-start">
+              <div className="text-[16px]">
+                The modern StudyNotion is the dictates its own terms. Today, to
+                be a competitive specialist requires more than professional
+                skills.
+              </div>
+              <CTAButton active={true} linkTo={"/signup"}>
+                Learn More
+              </CTAButton>
+            </div>
+          </div>
+          {/* part 3     */}
+          <TimeLineSection />
+
+          {/* part 4 */}
+          <LearningLanguageSection />
+        </div>
+      </div>
+
       {/* section 3 */}
+     
+
+      <div className="w-11/12 max-w-[1100px] flex flex-col items-center mx-auto justify-between text-white bg-[#000814] gap-8">
+        <InstructorSection />
+        <h2 className="text-center text-4xl font-bold mt-10 ">
+          Reviews from other learners
+        </h2>
+        {/* review slider  */}
+      </div>
+
       {/* section 4 */}
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import CTAButton from "./CTAButton";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { FaArrowRight } from "react-icons/fa";
 import { TypeAnimation } from 'react-type-animation';
 
 function CodeBlocks({
@@ -26,7 +26,7 @@ function CodeBlocks({
 
             <CTAButton active={ctaBtn1.active} linkTo={ctaBtn1.linkTo}>
               <div className="flex gap-2 items-center ">
-                {ctaBtn1.btnText} <MdOutlineArrowRightAlt />
+                {ctaBtn1.btnText} <FaArrowRight />
               </div>
             </CTAButton>
 
